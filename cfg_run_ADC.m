@@ -22,7 +22,7 @@ Y_log = log(Y./Y_0);
 Y_log(Y_log > 0) = NaN;
 Y_log(isinf(Y_log)) = NaN;
 
-X = [-b, b.^2/6];
+X = -b;
 
 [Xq, Xr] = qr(X, 0);
 coef = Xr\Xq';
@@ -30,17 +30,17 @@ coef = Xr\Xq';
 x11 = zeros(size(Y(:, :, :, 1)));
 
 for i_a = 1:size(Y_log, 4)
-   x11_i = Y_log(:, :, :, i_a)*coef(1, i_a); 
-   
+   x11_i = Y_log(:, :, :, i_a)*coef(1, i_a);   
    x11 = x11 + x11_i;
 end
 
 D = x11;
 
 [pat, tit, ext] = fileparts(im);
-outName_D = fullfile(pat, [tit, '_', outName, '_D', ext]);
+outName_D = fullfile(pat, [tit, '_', outName, '_ADC', ext]);
 
 V_D = V(1);
+V_D.dt = [16, 0];
 V_D.fname = outName_D;
 
 spm_create_vol(V_D);

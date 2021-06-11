@@ -43,12 +43,19 @@ end
 D = x11;
 K = x22./x11.^2;
 
+D(D<0) = NaN;
+K(K<0) = NaN;
+
 [pat, tit, ext] = fileparts(im);
 outName_D = fullfile(pat, [tit, '_', outName, '_D', ext]);
 outName_K = fullfile(pat, [tit, '_', outName, '_K', ext]);
 
 V_D = V(1);
+V_D.dt = [16, 0];
+
 V_K = V(1);
+V_K.dt = [16, 0];
+
 V_D.fname = outName_D;
 V_K.fname = outName_K;
 
