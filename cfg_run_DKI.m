@@ -8,6 +8,7 @@ outName = job.outfile;
 % run model fit
 V = spm_vol(im);
 Y = spm_read_vols(V);
+
 fid = fopen(bvals);
 b = fscanf(fid,'%f ');
 fclose(fid);

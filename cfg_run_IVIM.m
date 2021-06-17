@@ -11,4 +11,5 @@ opts.bthr = job.bthr; % threshold for segmented fitting = 200 s/mm2
 opts.outfile = job.outfile;
 
 % run model fit
-IVIMmodelfit(im,bvals,fittype,mask,opts);
+% IVIMmodelfit(im,bvals,fittype,mask,opts);
+IVIMmodelfit_spm(im,bvals,fittype,mask,opts);
